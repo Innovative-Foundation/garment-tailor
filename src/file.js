@@ -46,22 +46,25 @@ class UniverseFile {
     return;
   }
 
+  static fixture(file) {
+    const source = p.resolve(__dirname, "fixture", file);
+    return require(source);
+  }
+
   swap(file) {
     const source = p.resolve(__dirname, "fixture", file);
     fs.copyFileSync(source, this.filePath);
   }
 
   read() {
-    const { prefix } = this;
-    debug(`reading ${this.path}`, { prefix });
+    debug(`reading ${this.path}`);
     const extension = p.extname(this.path);
 
     switch (extension) {
       case ".json":
         return require(this.filePath);
-        break;
       default:
-        debug(`'${extension}' is not known extension`, { prefix });
+        debug(`'${extension}' is not known extension`);
         break;
     }
   }

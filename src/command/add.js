@@ -12,10 +12,10 @@ const QUESTIONS = [
     type: "list",
     name: "peignoir",
     choices: [
-      "semantic release",
       "github action",
       "node-cli",
       "angular",
+      "semver",
       "node",
       "git",
       "npm",
@@ -34,7 +34,7 @@ const action = (feature) => {
       const npm = new NpmPeignoir();
       return npm.init();
 
-    case "semantic release":
+    case "semver":
       const sr = new SemanticReleasePeignoir();
       return sr.init();
 

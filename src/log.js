@@ -4,7 +4,7 @@ const log = (message, { error = false, prefix = "" } = {}) => {
   const msg = prefix + message;
 
   if (error) {
-    console.error(msg);
+    console.error(error);
   } else {
     console.log(msg);
   }

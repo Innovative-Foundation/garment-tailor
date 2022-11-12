@@ -6,7 +6,8 @@ async function gitCheck() {
   const git = new GitPeignoir();
 
   if (git.file.exists) {
-    log(`Git folder founded`);
+    log(`Detected git`);
+    log("");
   } else {
     await Inquirer.prompt({
       message: "Git not found, do you want to init repo?",
@@ -17,7 +18,7 @@ async function gitCheck() {
   }
 
   if (git.gitignore.exists) {
-    log(`.gitignore file founded`);
+    log(`.gitignore file detected`);
     log("");
   } else {
     // init some .gitignore based on support table

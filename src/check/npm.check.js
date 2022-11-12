@@ -15,16 +15,19 @@ async function npmCheck() {
     }).then(({ init }) => init && npm.init());
   }
 
+  log(`Detected npm '${npm.name} v${npm.version}'`);
+  log("");
+
   if (npm.bin) {
-    log("Looks like we have a node cli project here");
+    log("Looks like we have a node-cli project here");
   }
 
-  log(`Npm package ${npm.name} (v${npm.version}) founded`);
-
   if (npm.dependencies && npm.dependencies.length) {
-    log(`Found ${npm.dependencies.length} npm dependencies`);
-  } else {
-    log(`Looks like '${npm.name}' have no npm dependencies`);
+    log(`Detected ${npm.dependencies.length} dependencies`);
+  }
+
+  if (npm.scripts && npm.scripts.length) {
+    log(`Detected ${npm.scripts.length} scripts`);
   }
 
   log("");
