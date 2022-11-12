@@ -44,6 +44,11 @@ class UniverseFile {
     }
   }
 
+  swap(file) {
+    const source = p.resolve(__dirname, "fixture", file);
+    fs.copyFileSync(source, this.filePath);
+  }
+
   read() {
     const { prefix } = this;
     debug(`reading ${this.path}`, { prefix });

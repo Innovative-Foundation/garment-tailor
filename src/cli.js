@@ -2,15 +2,22 @@
 
 const { name, version, description } = require("../package.json");
 const { program } = require("commander");
-const check = require("./command/check");
-const initialize = require("./command/initialize");
+const health = require("./command/health");
+const add = require("./command/add");
+const { log } = require("./log");
 
 class Universe {
   constructor() {
-    program.description(description).version(version).name(name);
-    initialize(program);
-    check(program);
+    program
+      .addCommand(health())
+      .addCommand(add())
+      .description(description)
+      .version(version)
+      .name(name);
+
+    log("");
     program.parse();
+    log("");
   }
 }
 

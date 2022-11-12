@@ -1,5 +1,5 @@
 const { UniverseFile } = require("../file");
-const { debug, log } = require("../log");
+const { log } = require("../log");
 
 class GitPeignoir {
   constructor() {
@@ -9,12 +9,8 @@ class GitPeignoir {
   }
 
   init() {
-    const { prefix } = this;
-
-    log("init", { prefix: this.prefix });
-
     if (this.file.exists) {
-      log("already initialized", { prefix });
+      log("Git already initialized");
     } else {
       execute("git init");
       // Write node_modules to .gitignore package.json exists

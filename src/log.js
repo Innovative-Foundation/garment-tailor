@@ -1,7 +1,7 @@
 const env = require("./env");
 
 const log = (message, { error = false, prefix = "" } = {}) => {
-  const msg = "[Universe] " + prefix + message;
+  const msg = prefix + message;
 
   if (error) {
     console.error(msg);
