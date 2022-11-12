@@ -1,3 +1,4 @@
+const { execute } = require("../execute");
 const { UniverseFile } = require("../file");
 const { log } = require("../log");
 
@@ -8,13 +9,13 @@ class GitPeignoir {
     this.prefix = "Git | ";
   }
 
-  init() {
+  async init() {
     if (this.file.exists) {
       log("Git already initialized");
     } else {
-      execute("git init");
+      await execute("git init");
       // Write node_modules to .gitignore package.json exists
-      this.gitignore.init();
+      await this.gitignore.init();
     }
   }
 }

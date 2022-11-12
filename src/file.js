@@ -28,7 +28,7 @@ class UniverseFile {
     }
   }
 
-  init(data = "") {
+  async init(data = "") {
     const { exists, path, filePath, prefix } = this;
 
     if (!exists) {
@@ -42,6 +42,8 @@ class UniverseFile {
     } else {
       debug(`'${path}' already exists`, { prefix });
     }
+
+    return;
   }
 
   swap(file) {

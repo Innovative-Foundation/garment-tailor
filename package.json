@@ -12,6 +12,8 @@
   "author": "Damian Martyniak",
   "license": "ISC",
   "dependencies": {
-    "commander": "^9.4.1"
+    "commander": "^9.4.1",
+    "inquirer": "^8.0.0",
+    "rxjs": "^7.5.7"
   }
 }

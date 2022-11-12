@@ -1,20 +1,14 @@
-const { exec } = require("child_process");
+const exec = require('util').promisify(require("child_process").exec);
 const { log, debug } = require("./log");
 
-const execute = (command) => {
-  const prefix = "Execute | ";
+const execute = async (command) => {
+  const { stdout, stderr } = await exec(command);
 
-  exec(command, (err, message, error) => {
-    if (err) {
-      log("", { error: err, prefix });
-    }
+  log(stdout);
 
-    log(message, { prefix });
-
-    if (error) {
-      log("", { error: err, prefix });
-    }
-  });
+  if (stderr) {
+    log("", { error: stderr });
+  }
 };
 
 module.exports = { execute };
