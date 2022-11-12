@@ -10,18 +10,19 @@ class NpmPeignoir {
   bin = null;
 
   constructor() {
-    this.file = new UniverseFile("package.json");
+    const file = new UniverseFile("package.json");
+    const pkg = file.read();
 
-    const { version, name, dependencies, bin, scripts } = this.file.read();
-
-    this._scripts = scripts;
-
-    this.dependencies = dependencies && Object.keys(dependencies);
-    this.scripts = scripts && Object.keys(scripts);
-    this.version = version;
+    this._scripts = pkg.scripts;
     this.enabled = true;
-    this.name = name;
-    this.bin = bin;
+
+    this.dependencies = pkg.dependencies && Object.keys(pkg.dependencies);
+    this.scripts = pkg.scripts && Object.keys(pkg.scripts);
+    this.private = pkg.private;
+    this.version = pkg.version;
+    this.name = pkg.name;
+    this.bin = pkg.bin;
+    this.file = file;
   }
 
   async update(map) {

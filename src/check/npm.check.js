@@ -22,6 +22,10 @@ async function npmCheck() {
     log("Looks like we have a node-cli project here");
   }
 
+  if (!npm.private) {
+    log("It looks like it is public package ❤️");
+  }
+
   if (npm.dependencies && npm.dependencies.length) {
     log(`Detected ${npm.dependencies.length} dependencies`);
   }

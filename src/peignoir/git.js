@@ -6,7 +6,6 @@ class GitPeignoir {
   constructor() {
     this.gitignore = new UniverseFile(".gitignore");
     this.file = new UniverseFile(".git");
-    this.prefix = "Git | ";
   }
 
   async init() {
