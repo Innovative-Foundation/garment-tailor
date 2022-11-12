@@ -1,5 +1,5 @@
 const { execute } = require("../execute");
-const { readPackageJSON } = require("../file");
+const { UniverseFile } = require("../file");
 const { log } = require("../log");
 
 class NpmPeignoir {
@@ -10,16 +10,25 @@ class NpmPeignoir {
   bin = null;
 
   constructor() {
-    const { version, name, dependencies, bin, scripts } = readPackageJSON();
+    this.file = new UniverseFile("package.json");
 
-    this.dependencies = dependencies && Object.keys(dependencies);
+    const { version, name, dependencies, bin, scripts } = this.file.read();
 
     this._scripts = scripts;
+
+    this.dependencies = dependencies && Object.keys(dependencies);
     this.scripts = scripts && Object.keys(scripts);
     this.version = version;
     this.enabled = true;
     this.name = name;
     this.bin = bin;
+  }
+
+  async update(map) {
+    const pkg = this.file.read();
+    const newPkg = Object.assign(pkg, map);
+
+    await this.file.update(JSON.stringify(newPkg, null, 2));
   }
 
   async run(script) {
@@ -29,10 +38,11 @@ class NpmPeignoir {
     }
   }
 
-  async install(pkg) {
+  //TODO start-server-and-test for cypress
+  async install(pkg, dev = false) {
     // check if there is node_modules in .gitignore
     if (this.enabled) {
-      await execute(`npm install --save ${pkg}`);
+      return await execute(`npm install ${dev ? "-D" : "--save"} ${pkg}`);
     }
   }
 

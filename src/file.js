@@ -28,6 +28,10 @@ class UniverseFile {
     }
   }
 
+  async update(data) {
+    fs.writeFileSync(this.filePath, data);
+  }
+
   async init(data = "") {
     const { exists, path, filePath, prefix } = this;
 
@@ -70,12 +74,6 @@ class UniverseFile {
   }
 }
 
-function readPackageJSON() {
-  const file = new UniverseFile("package.json");
-  return file.read();
-}
-
 module.exports = {
-  readPackageJSON,
   UniverseFile,
 };
