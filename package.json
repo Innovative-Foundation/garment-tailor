@@ -1,0 +1,17 @@
+{
+  "name": "universe-cli",
+  "version": "0.0.0",
+  "description": "Command line interface for managing and scalable projects",
+  "main": "src/cli.js",
+  "bin": {
+    "universe": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Damian Martyniak",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.4.1"
+  }
+}
