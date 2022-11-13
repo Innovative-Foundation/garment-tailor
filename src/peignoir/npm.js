@@ -14,6 +14,9 @@ class NpmPeignoir {
     const pkg = file.read();
 
     this._scripts = pkg.scripts;
+
+    // .npmrc file check
+
     this.enabled = true;
 
     this.dependencies = pkg.dependencies && Object.keys(pkg.dependencies);
@@ -24,6 +27,19 @@ class NpmPeignoir {
     this.bin = pkg.bin;
     this.file = file;
   }
+
+  tips = [
+    {
+      links: "https://docs.npmjs.com/about-access-tokens",
+      content:
+        "You need to set NPM_TOKEN (for github action, and to publish public npm package) generate it please go to",
+    },
+    {
+      link: "https://docs.npmjs.com/cli/v9/using-npm/config",
+      content:
+        "To change npm configuration edit .npmrc. See npm config for the option list.",
+    },
+  ];
 
   async update(map) {
     const pkg = this.file.read();
@@ -59,6 +75,9 @@ class NpmPeignoir {
     } else {
       await execute("npm init --yes");
       // Write node_modules to .gitignore if it exists
+      // api to generate user token
+      // ask if private (update private: toAnswer)
+      // maybe .npmrc
     }
   }
 }
