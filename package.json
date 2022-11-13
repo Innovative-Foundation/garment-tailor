@@ -1,10 +1,10 @@
 {
-  "name": "universe-cli",
+  "name": "garment-tailor",
   "version": "0.0.0",
   "description": "Command line interface for managing and scalable projects",
   "main": "src/cli.js",
   "bin": {
-    "universe": "./src/cli.js"
+    "gtr": "./src/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,10 +15,5 @@
     "commander": "^9.4.1",
     "inquirer": "^8.0.0",
     "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/git": "^10.0.1",
-    "conventional-changelog-conventionalcommits": "^5.0.0"
   }
 }
