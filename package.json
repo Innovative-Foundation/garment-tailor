@@ -2,7 +2,7 @@
   "name": "garment-tailor",
   "version": "0.0.0",
   "description": "Command line interface for managing and scalable projects",
-  "main": "src/cli.js",
+  "main": "./src/cli.js",
   "bin": {
     "gtr": "./src/cli.js"
   },
@@ -15,5 +15,18 @@
     "commander": "^9.4.1",
     "inquirer": "^8.0.0",
     "lodash": "^4.17.21"
+  },
+  "config": {
+    "commitizen": {
+      "path": [
+        "cz-conventional-changelog"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "cz-conventional-changelog": "^3.3.0"
   }
 }
