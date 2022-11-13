@@ -38,15 +38,22 @@ module.exports = () => {
         break;
 
       case "install":
+        const { dev } = await Inquirer.prompt({
+          message: "Install as developer dependencies?",
+          type: "confirm",
+          default: false,
+          name: "dev",
+        });
+
         const { package } = await Inquirer.prompt({
-          message: "npm install --save",
+          message: `npm install ${ dev ? '-D' : '--save'}`,
           type: "input",
           name: "package",
         });
 
         log("");
 
-        await npm.install(package);
+        await npm.install(package, dev);
         break;
 
       case "remove":

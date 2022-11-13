@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "peignoir"
+        "peignoir",
+        "npm"
     ]
 }
