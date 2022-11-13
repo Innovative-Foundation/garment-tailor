@@ -45,40 +45,44 @@ class SemanticReleasePeignoir {
   }
 
   async init() {
-    if (this.file.exists) {
-      return true;
-    } else {
-      const commitizen = new CommitizenPeignoir();
+    const commitizen = new CommitizenPeignoir();
+
+    if (!this.file.exists) {
       const npm = new NpmPeignoir();
 
+      const enabled = await Inquirer.prompt({
+        message: "Commitizen not detected, init it?",
+        type: "confirm",
+        name: "init",
+        default: false,
+      }).then(async ({ init }) => {
+        log("");
+
+        if (init) {
+          const comm = await commitizen.init();
+
+          return { response: "cz-created" };
+        }
+
+        return { response: "cz-dont-exist" };
+      });
+
       if (!commitizen.enabled) {
-        const enabled = await Inquirer.prompt({
-          message: "Commitizen not detected, init it?",
-          type: "confirm",
-          name: "init",
-          default: false,
-        }).then(({ init }) => {
-          log("");
-
-          if (init) {
-            return commitizen.init();
-          }
-
-          return init;
-        });
-
-        if (!enabled) {
-          return false;
+        if (
+          enabled.response === "cz-dont-exist" ||
+          enabled.response === "cz-created"
+        ) {
+          return enabled;
         }
       }
 
-      if (this.enabled) {
-        return true;
-      }
-
       this.file.swap(this.configPath);
-      return await this.installDeps(npm);
+      return await this.installDeps(npm).then(() => ({
+        response: "semver-created",
+      }));
     }
+
+    return { response: "exists" };
   }
 }
 
