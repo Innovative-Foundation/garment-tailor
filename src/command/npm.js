@@ -43,10 +43,10 @@ module.exports = () => {
           type: "input",
           name: "package",
         });
-
         log("");
 
-        await npm.install(package);
+        const success = await npm.install(package);
+        log(`${package} install ${success ? "success" : "fail"}`);
         break;
 
       case "remove":

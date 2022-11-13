@@ -38,6 +38,20 @@ const addAction = async (feature) => {
   }
 };
 
+const action = async (peignoir) => {
+  const success = await addAction(peignoir);
+
+  if (success) {
+    log(`Succesfully initialized ${peignoir}`);
+  } else {
+    log(`Aborted initializing ${peignoir}`);
+  }
+
+  log(success.response);
+
+  log("");
+};
+
 module.exports = () => {
   const argument = new Argument("<peignoir>")
     .argOptional()
@@ -49,28 +63,13 @@ module.exports = () => {
 
   command.action(async (peignoir) => {
     if (peignoir) {
-      const success = await addAction(peignoir);
-
-      if (success) {
-        log(`Succesfully initialized ${peignoir}`);
-      } else {
-        log(`Aborted initializing ${peignoir}`);
-      }
-
-      log("");
+      await action(peignoir);
       return;
     }
 
     Inquirer.prompt(ADD_QUESTIONS).then(async ({ peignoir }) => {
       log("");
-      const success = await addAction(peignoir);
-
-      if (success) {
-        log(`Succesfully initialized ${peignoir}`);
-      } else {
-        log(`Aborted initializing ${peignoir}`);
-      }
-      log("");
+      await action(peignoir);
     });
   });
 
