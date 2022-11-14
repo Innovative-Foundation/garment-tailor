@@ -14,6 +14,9 @@ class SemanticReleasePeignoir {
     "@semantic-release/git",
   ];
 
+  // check for main branch (not master)
+  // Action node-version 'lts/*' cache true
+
   constructor() {
     this.file = new UniverseFile(".releaserc.json");
   }
