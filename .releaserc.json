@@ -1,4 +1,10 @@
 {
+  "branches": [
+    { "name": "master" },
+    { "name": "next", "prerelease": true },
+    { "name": "beta", "prerelease": true },
+    { "name": "rc", "prerelease": true }
+  ],
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
@@ -23,47 +29,6 @@
         "presetConfig": {
           "types": [
             {
-              "type": "feat",
-              "section": "Features"
-            },
-            {
-              "type": "fix",
-              "section": "Bug Fixes"
-            },
-            {
-              "type": "perf",
-              "section": "Performance Improvements"
-            },
-            {
-              "type": "revert",
-              "section": "Reverts"
-            },
-            {
-              "type": "docs",
-              "section": "Documentation",
-              "hidden": true
-            },
-            {
-              "type": "style",
-              "section": "Styles",
-              "hidden": true
-            },
-            {
-              "type": "chore",
-              "section": "Miscellaneous Chores",
-              "hidden": true
-            },
-            {
-              "type": "refactor",
-              "section": "Code Refactoring",
-              "hidden": false
-            },
-            {
-              "type": "test",
-              "section": "Tests",
-              "hidden": true
-            },
-            {
               "type": "build",
               "section": "Build System",
               "hidden": true
@@ -74,9 +39,44 @@
               "hidden": true
             },
             {
+              "type": "feat",
+              "section": "Features",
+              "hidden": false
+            },
+            {
+              "type": "refactor",
+              "section": "Code Refactoring",
+              "hidden": false
+            },
+            {
               "type": "improvement",
               "section": "Improvement",
               "hidden": false
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes",
+              "hidden": false
+            },
+            {
+              "type": "perf",
+              "section": "Performance Improvements",
+              "hidden": false
+            },
+            {
+              "type": "docs",
+              "section": "Documentation",
+              "hidden": true
+            },
+            {
+              "type": "test",
+              "section": "Tests",
+              "hidden": true
+            },
+            {
+              "type": "chore",
+              "section": "Miscellaneous Chores",
+              "hidden": true
             }
           ]
         }
