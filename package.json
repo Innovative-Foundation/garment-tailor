@@ -2,6 +2,7 @@
   "name": "garment-tailor",
   "version": "0.0.0",
   "description": "Command line interface for managing and scalable projects",
+  "private": false,
   "main": "./src/cli.js",
   "bin": {
     "gtr": "./src/cli.js"
